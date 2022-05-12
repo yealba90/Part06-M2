@@ -1,0 +1,32 @@
+.container {
+    width: 350px;
+    border: 2px solid lightgray;
+    border-radius: 5px;
+    color: white;
+}
+
+.grid {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btnClose {
+    float: right;
+    background-color: red;
+    color: white;
+    border: 1px solid darkred;
+    border-radius: 5px;
+    border-color: red;
+    margin: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.btnClose:hover {
+    background-color: white;
+    color: black;
+}
+
+.header {
+    margin-top: 20px;
+}

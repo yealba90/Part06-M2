@@ -5,6 +5,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  height: 800px;
+  background-image: url("https://culturacientifica.com/app/uploads/2015/02/Del-clima.jpg");
+  background-size: cover;
+  /* background-size: 25rem; */
+  background-repeat:no-repeat;
+  background-position-x:center;
+  background-position-y:center;
+  background-size: 100rem;
+
 }
 
 code {
