@@ -26,14 +26,15 @@ function contador(state = initialState, action) {
       }
     }
   }
-  if (action.type === ASYNC){
-    return {
-      contador:     setTimeout(function(){
-        state.contador + 1
-    },1000)
+  //no se hace de esta manera!!!!!!!!!!!!!!!!!!
 
-    }
-  }
+  // if (action.type === ASYNC){
+  //   return {
+  //     contador:     setTimeout(function(){
+  //       state.contador + 1
+  //   },1000)
+  //   }
+  // }
   return state;
 }
 

@@ -5,6 +5,7 @@ const { INCREMENTO, DECREMENTO, IMPAR, ASYNC } = require('../action-types');
 // de manejar ninguna de las lógicas actuales de actualización del store central de Redux.
 // Eso se lo deja al reducer(s).
 
+// pregunbta de examen/entrevista: Una ACTION es un OBJETO con un TYPE key
 const incremento = () => {
   return {
     type: INCREMENTO
@@ -24,9 +25,9 @@ const impar = () => {
 };
 
 const async = () => {
-  return {
-    type: ASYNC
-  }
+  return (dispatch) => {
+    setTimeout(() => dispatch(incremento()), 1000);
+  };
 };
 
 module.exports = {

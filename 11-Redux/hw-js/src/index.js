@@ -1,9 +1,10 @@
-const { createStore } = require('redux');
+const { createStore, applyMiddleware } = require('redux');
+import thunk from 'redux-thunk'
 const reducer = require('./reducer');
 const { incremento, decremento, impar, async } = require('./actions');
 
 // En esta linea creamos nuestro store. Pasandole como parametro nuestro Reducer
-var store = createStore(reducer);
+var store = createStore(reducer, applyMiddleware(thunk));
 
 // Obtenemos el elemento con el id `valor`.
 var valor = document.querySelector('#valor');
