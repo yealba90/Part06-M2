@@ -13,3 +13,30 @@
 .label {
     padding-right: 10px;
 }
+
+.container_full {
+    width: 100%;
+    max-width: 1200px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+}
+
+:root {
+    --color-inactivo: #5f5050;
+    --color-hover: #ffa400;
+}
+
+.card button {
+    background-color: initial;
+    border: 0;
+    color: var(--color-inactivo);
+    transition: 1s all;
+}
+
+.card button {
+    cursor: pointer;
+    color: var(--color-hover);
+    transform: rotate(360deg);
+}

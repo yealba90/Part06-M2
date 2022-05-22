@@ -8,9 +8,9 @@ render(
     <Provider store={store}>
       <div>
         <Counter/>
+        {/* <Counter/>
         <Counter/>
-        <Counter/>
-        <Counter/>
+        <Counter/> */}
       </div>
     </Provider>,
   document.getElementById('app')

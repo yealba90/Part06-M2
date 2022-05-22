@@ -1533,9 +1533,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
   _react2.default.createElement(
     'div',
     null,
-    _react2.default.createElement(_Counter2.default, null),
-    _react2.default.createElement(_Counter2.default, null),
-    _react2.default.createElement(_Counter2.default, null),
     _react2.default.createElement(_Counter2.default, null)
   )
 ), document.getElementById('app'));
@@ -22827,72 +22824,43 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 //  - Valores: Acceder directamente al store desde el componente
 //  - Actions: Despachar directo desde el componente
 
-var Counter = function (_Component) {
-  _inherits(Counter, _Component);
+// class Counter extends Component {
+//  constructor() {
+//    super();
+//    this.state = { count: 0 };
+//  }
 
-  function Counter() {
-    _classCallCheck(this, Counter);
+//  componentDidMount() {
+//    this.unsubscribeStore = store.subscribe(() => {
+//      this.setState({
+//        count: store.getState().count
+//      });
+//    });
+//  }
 
-    var _this = _possibleConstructorReturn(this, (Counter.__proto__ || Object.getPrototypeOf(Counter)).call(this));
+//  componentWillUnmount() {
+//    this.unsubscribeStore();
+//  };
 
-    _this.state = { count: 0 };
-    return _this;
-  }
+//  render() {
+//    return (
+//      <p>
+//        Clicked: {this.state.count} times
+//        <button onClick={() => store.dispatch(increment())}>
+//          +
+//        </button>
+//        <button onClick={() => store.dispatch(decrement())}>
+//          -
+//        </button>
+//        <button onClick={() => store.dispatch(reset())}>
+//          Reset
+//        </button>
+//      </p>
+//    )
+//  }
+// }
 
-  _createClass(Counter, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      this.unsubscribeStore = _store2.default.subscribe(function () {
-        _this2.setState({
-          count: _store2.default.getState().count
-        });
-      });
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.unsubscribeStore();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'p',
-        null,
-        'Clicked: ',
-        this.state.count,
-        ' times',
-        _react2.default.createElement(
-          'button',
-          { onClick: function onClick() {
-              return _store2.default.dispatch((0, _index.increment)());
-            } },
-          '+'
-        ),
-        _react2.default.createElement(
-          'button',
-          { onClick: function onClick() {
-              return _store2.default.dispatch((0, _index.decrement)());
-            } },
-          '-'
-        ),
-        _react2.default.createElement(
-          'button',
-          { onClick: function onClick() {
-              return _store2.default.dispatch((0, _index.reset)());
-            } },
-          'Reset'
-        )
-      );
-    }
-  }]);
-
-  return Counter;
-}(_react.Component);
-
-exports.default = Counter;
+// export default Counter;
 
 // Opción 2A: Utilizar la función connect de 'react-redux'
 //  - Valores: Utilizar mapStateToProps
@@ -22903,35 +22871,53 @@ exports.default = Counter;
 // accederlo desde las props.
 // Ejemplo: <button onClick={increment}>
 
-// class Counter extends Component {
-//  render() {
-//    return (
-//      <p>
-//        Clicked: {this.props.count} times
-//        <button onClick={this.props.increment}>
-//          +
-//        </button>
-//        <button onClick={this.props.decrement}>
-//          -
-//        </button>
-//        <button onClick={this.props.reset}>
-//          Reset
-//        </button>
-//      </p>
-//    )
-//  }
-// }
-//
-// function mapStateToProps(state) {
-//   return {
-//     count: state.count
-//   };
-// }
+var Counter = function (_Component) {
+  _inherits(Counter, _Component);
 
-// export default connect(
-//   mapStateToProps,
-//   {increment, decrement, reset}
-// )(Counter);
+  function Counter() {
+    _classCallCheck(this, Counter);
+
+    return _possibleConstructorReturn(this, (Counter.__proto__ || Object.getPrototypeOf(Counter)).apply(this, arguments));
+  }
+
+  _createClass(Counter, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'p',
+        null,
+        'Clicked: ',
+        this.props.count,
+        ' times',
+        _react2.default.createElement(
+          'button',
+          { onClick: this.props.increment },
+          '+'
+        ),
+        _react2.default.createElement(
+          'button',
+          { onClick: this.props.decrement },
+          '-'
+        ),
+        _react2.default.createElement(
+          'button',
+          { onClick: this.props.reset },
+          'Reset'
+        )
+      );
+    }
+  }]);
+
+  return Counter;
+}(_react.Component);
+
+function mapStateToProps(state) {
+  return {
+    count: state.count
+  };
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, { increment: _index.increment, decrement: _index.decrement, reset: _index.reset })(Counter);
 
 // Opción 2B:
 //  - Actions: Utilizar mapDispatchToProps y acceder a ellas mediante props del componente

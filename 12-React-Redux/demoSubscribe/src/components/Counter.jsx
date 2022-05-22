@@ -11,43 +11,43 @@ import { bindActionCreators } from 'redux';
 //  - Valores: Acceder directamente al store desde el componente
 //  - Actions: Despachar directo desde el componente
 
-class Counter extends Component {
- constructor() {
-   super();
-   this.state = { count: 0 };
- }
+// class Counter extends Component {
+//  constructor() {
+//    super();
+//    this.state = { count: 0 };
+//  }
 
- componentDidMount() {
-   this.unsubscribeStore = store.subscribe(() => {
-     this.setState({
-       count: store.getState().count
-     });
-   });
- }
+//  componentDidMount() {
+//    this.unsubscribeStore = store.subscribe(() => {
+//      this.setState({
+//        count: store.getState().count
+//      });
+//    });
+//  }
 
- componentWillUnmount() {
-   this.unsubscribeStore();
- };
+//  componentWillUnmount() {
+//    this.unsubscribeStore();
+//  };
 
- render() {
-   return (
-     <p>
-       Clicked: {this.state.count} times
-       <button onClick={() => store.dispatch(increment())}>
-         +
-       </button>
-       <button onClick={() => store.dispatch(decrement())}>
-         -
-       </button>
-       <button onClick={() => store.dispatch(reset())}>
-         Reset
-       </button>
-     </p>
-   )
- }
-}
+//  render() {
+//    return (
+//      <p>
+//        Clicked: {this.state.count} times
+//        <button onClick={() => store.dispatch(increment())}>
+//          +
+//        </button>
+//        <button onClick={() => store.dispatch(decrement())}>
+//          -
+//        </button>
+//        <button onClick={() => store.dispatch(reset())}>
+//          Reset
+//        </button>
+//      </p>
+//    )
+//  }
+// }
 
-export default Counter;
+// export default Counter;
 
 // Opción 2A: Utilizar la función connect de 'react-redux'
 //  - Valores: Utilizar mapStateToProps
@@ -58,35 +58,35 @@ export default Counter;
 // accederlo desde las props.
 // Ejemplo: <button onClick={increment}>
 
-// class Counter extends Component {
-//  render() {
-//    return (
-//      <p>
-//        Clicked: {this.props.count} times
-//        <button onClick={this.props.increment}>
-//          +
-//        </button>
-//        <button onClick={this.props.decrement}>
-//          -
-//        </button>
-//        <button onClick={this.props.reset}>
-//          Reset
-//        </button>
-//      </p>
-//    )
-//  }
-// }
-//
-// function mapStateToProps(state) {
-//   return {
-//     count: state.count
-//   };
-// }
+class Counter extends Component {
+ render() {
+   return (
+     <p>
+       Clicked: {this.props.count} times
+       <button onClick={this.props.increment}>
+         +
+       </button>
+       <button onClick={this.props.decrement}>
+         -
+       </button>
+       <button onClick={this.props.reset}>
+         Reset
+       </button>
+     </p>
+   )
+ }
+}
 
-// export default connect(
-//   mapStateToProps,
-//   {increment, decrement, reset}
-// )(Counter);
+function mapStateToProps(state) {
+  return {
+    count: state.count
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  {increment, decrement, reset}
+)(Counter);
 
 // Opción 2B:
 //  - Actions: Utilizar mapDispatchToProps y acceder a ellas mediante props del componente
